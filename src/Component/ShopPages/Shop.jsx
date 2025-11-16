@@ -25,12 +25,9 @@ const Shop = () => {
                    <RightPart categories={categories} sections={sections}></RightPart>
             </div>
             </div>
-           <div className='mx-auto container px-8'>
-               <div className='mx-auto container lg:px-8 px-5'>
-          <Banner2  bgImage1={banner10} w="w-100" mt="mt-17" ml="ml-20" image={banner9} title={"Stay home & get your daily needs from our shop"} highlight="Nest Mart" subtitle="Start You'r Daily Shopping with "></Banner2>
+          <div className='mx-auto container lg:px-8 px-5'>
+         <Banner2 bgImage1={banner10} image={banner9} w="w-130 " mt="mt-17" ml="lg:ml-20 " title={"Stay home & get your daily needs from our shop"} highlight="Nest Mart" subtitle="Start You'r Daily Shopping with "></Banner2>
      </div>
-  
-           </div>
             <TopFooter></TopFooter>
         </div>
     );

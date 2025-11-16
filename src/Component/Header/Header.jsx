@@ -83,19 +83,14 @@ const Header = () => {
         </button>
 
         <ul className="flex items-center gap-4 lg:gap-6 font-medium text-gray-700">
-          <li>
-            <NavLink to="/deals" className={({ isActive }) => `${isActive ? "text-green-600" : ""} flex items-center gap-2`}>
-              <img src={hotImg} alt="hot deals" />
-              <p className="font-semibold">Deals</p>
-            </NavLink>
-          </li>
+       
           <li><NavLink to="/" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Home</NavLink></li>
           <li><NavLink to="/about" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>About</NavLink></li>
           <li><NavLink to="/shop" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Shop</NavLink></li>
-          <li><NavLink to="/vendors" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Vendors</NavLink></li>
-          <li><NavLink to="/mega" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Mega Menu</NavLink></li>
+         
+        
           <li><NavLink to="/blog" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Blog</NavLink></li>
-          <li><NavLink to="/pages" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Pages</NavLink></li>
+         
           <li><NavLink to="/contact" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Contact</NavLink></li>
         </ul>
 
