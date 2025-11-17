@@ -5,7 +5,7 @@ import logoImg from '../../assets/logo.svg';
 import CompareImg from '../../assets/icon-compare.svg';
 import headPhnImg from '../../assets/icon-headphone.svg';
 import TopHeader from './TopHeader';
-import hotImg from '../../assets/icon-hot.svg';
+
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -76,7 +76,7 @@ const Header = () => {
       </div>
 
       {/* Desktop Bottom Menu */}
-      <div className="hidden md:flex items-center justify-between px-4 lg:px-8 py-3 border-t border-gray-200 bg-white">
+      <div className="hidden md:flex items-center justify-between px-4 lg:px-8 py-3 border-t border-gray-200 bg-white mx-auto container">
         <button className="flex items-center gap-2 bg-[#2AA66D] text-white px-4 py-2 rounded-md hover:bg-green-600 transition text-sm md:text-base">
           <FiGrid />
           <span className="font-medium">Browse All Categories</span>
@@ -95,7 +95,7 @@ const Header = () => {
         </ul>
 
         {/* Phone */}
-        <div className="flex items-center gap-2 text-green-600 font-bold text-sm lg:text-xl">
+        <div className="flex items-center gap-2 text-green-600 font-bold text-sm lg:text-xl ">
           <img src={headPhnImg} alt="" />
           <div>
             <p>1900 - 888</p>
