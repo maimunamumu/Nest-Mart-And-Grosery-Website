@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 import { IoIosArrowForward } from 'react-icons/io';
+import { addToCart } from '../../../../Redux/CartSlice';
+import { useDispatch } from 'react-redux';
 
 const DealsDay = ({ products }) => {
+  const dispatch=useDispatch()
   const targetDate = new Date("2025-12-31T23:59:59").getTime();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -108,7 +111,7 @@ const DealsDay = ({ products }) => {
                     ${product.oldPrice}
                   </span>
                 </div>
-                <button className="bg-green-100 text-green-700 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-green-200 transition text-xs font-medium px-2">
+                <button className="bg-green-100 text-green-700 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-green-200 transition text-xs font-medium px-2" onClick={()=>dispatch(addToCart(product))}>
                   <FaShoppingCart />
                   <p>Add</p>
                 </button>

@@ -1,12 +1,15 @@
 import React from 'react';
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 import { Link } from 'react-router';
+import { addToCart } from '../../../../Redux/CartSlice';
+import { useDispatch } from 'react-redux';
 
 const ShopCard = ({product}) => {
+  const dispatch =useDispatch()
        const { image,label, labelColor,category,name, brand,rating,price,oldPrice} = product;
     return (
         <div>
-              <Link to={`/product/${product.id}`}>
+           
         <div className="bg-white rounded-2xl p-4 shadow-sm hover:shadow-md   relative">
       <div
           className={`absolute -top-0.5 -left-0.5 text-xs text-white px-3 py-1 rounded-tl-lg rounded-br-lg font-medium ${labelColor}`}>
@@ -14,12 +17,14 @@ const ShopCard = ({product}) => {
         </div>
 
     
-      <div className="mb-3">
+       <Link to={`/product/${product.id}`}>
+         <div className="mb-3">
         <img src={image}
           alt={name}
           className="lg:w-40 w-100 h-70 lg:h-40 object-contain rounded-lg"
         />
       </div>
+       </Link>
 
     
       <p className="lg:text-xs text-sm text-gray-500 mb-1">{category}</p>
@@ -46,7 +51,7 @@ const ShopCard = ({product}) => {
           <span className="lg:text-xs text-sm text-gray-500 line-through">${oldPrice}</span>
       
       </div>
-      <button className=" bg-green-100 text-green-700 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-green-200 transition lg:text-xs text-lg font-medium px-2">
+      <button className=" bg-green-100 text-green-700 py-2 rounded-md flex items-center justify-center gap-2 hover:bg-green-200 transition lg:text-xs text-lg font-medium px-2" onClick={()=>dispatch(addToCart(product))}>
         <FaShoppingCart />
         <p>Add</p>
        
@@ -54,7 +59,7 @@ const ShopCard = ({product}) => {
      </div>
     
     </div>
-       </Link>
+     
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Product from '../Product/Product';
 
 const Products = ({ products }) => {
+
   const [selected, setSelected] = useState(null);
 
   const handleSelected = (id) => {

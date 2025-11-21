@@ -1,7 +1,11 @@
 import React from 'react';
 import { FaStar, FaShoppingCart, FaHeart, FaExchangeAlt } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../../Redux/CartSlice';
+import { addToWishlist } from '../../../../Redux/WishList';
 
 const ProductDetailsCard = ({product}) => {
+  const dispatch =useDispatch()
 
      const {
     label,
@@ -100,12 +104,12 @@ const ProductDetailsCard = ({product}) => {
           </div>
 
           {/* Add to Cart */}
-          <button className="flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-md font-medium hover:bg-green-700">
+          <button className="flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-md font-medium hover:bg-green-700" onClick={()=>dispatch(addToCart(product))}>
             <FaShoppingCart /> Add to cart
           </button>
 
           {/* Heart + Exchange Icons */}
-          <button className="p-2 border rounded-md hover:bg-gray-100">
+          <button className="p-2 border rounded-md hover:bg-gray-100" onClick={()=>dispatch(addToWishlist(product))}>
             <FaHeart className="text-gray-500" />
           </button>
           <button className="p-2 border rounded-md hover:bg-gray-100">

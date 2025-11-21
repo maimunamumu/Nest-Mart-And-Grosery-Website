@@ -1,11 +1,16 @@
 import React from 'react';
-import { FaStar, FaShoppingCart } from "react-icons/fa";
+import { FaStar, FaShoppingCart, FaHeart } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {addToCart} from "../../../../Redux/CartSlice"
+import{addToWishlist} from "../../../../Redux/WishList"
 
 const Product = ({ product }) => {
+  const dispatch =useDispatch();
+
   const { image, label, labelColor, category, name, brand, rating, price, oldPrice } = product;
   return (
-    <Link to={`product/${product.id}`}>
+   
       <div className="bg-white rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-all duration-300 relative">
         
         {/* Label */}
@@ -16,6 +21,7 @@ const Product = ({ product }) => {
         </div>
 
         {/* Image */}
+       <Link to={`product/${product.id}`}>
         <div className="mb-3 flex justify-center">
           <img
             src={image}
@@ -24,6 +30,7 @@ const Product = ({ product }) => {
           />
         </div>
 
+      </Link>
         {/* Category */}
         <p className="text-[10px] sm:text-xs text-gray-500 mb-1">{category}</p>
 
@@ -54,13 +61,20 @@ const Product = ({ product }) => {
             <span className="text-xs sm:text-sm text-gray-500 line-through">${oldPrice}</span>
           </div>
 
-          <button className="bg-green-100 text-green-700 py-1.5 sm:py-2 rounded-md flex items-center justify-center gap-1 sm:gap-2 hover:bg-green-200 transition text-[11px] sm:text-sm font-medium px-2 sm:px-3">
+        
+        </div>
+        <div className='flex gap-3'>
+            <button className="bg-green-100 text-green-700 py-1.5 sm:py-2 rounded-md flex items-center justify-center gap-1 sm:gap-2 hover:bg-green-200 transition text-[11px] sm:text-sm font-medium px-2 sm:px-3" onClick={()=>dispatch(addToCart(product))}>
             <FaShoppingCart className="text-xs sm:text-sm" />
-            <p>Add</p>
+          
+          </button>
+          <button className="bg-green-100 text-green-700 py-1.5 sm:py-2 rounded-md flex items-center justify-center gap-1 sm:gap-2 hover:bg-green-200 transition text-[11px] sm:text-sm font-medium px-2 sm:px-3" onClick={()=>dispatch(addToWishlist(product))}>
+            <FaHeart className="text-xs sm:text-sm" />
+            
           </button>
         </div>
       </div>
-    </Link>
+   
   );
 };
 

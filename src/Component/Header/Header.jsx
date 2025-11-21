@@ -5,10 +5,14 @@ import logoImg from '../../assets/logo.svg';
 import CompareImg from '../../assets/icon-compare.svg';
 import headPhnImg from '../../assets/icon-headphone.svg';
 import TopHeader from './TopHeader';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router';
 
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const cart =useSelector((state)=> state.Cart.items);
+  const wishList =useSelector((state)=>state.WishList.items)
 
   return (
     <div className="shadow-sm border-b border-gray-300 bg-white">
@@ -56,16 +60,20 @@ const Header = () => {
         {/* Right Icons */}
         <div className="flex items-center gap-4 text-gray-700">
           {/* Wishlist */}
+      <Link to="/dashboard">
           <div className="relative">
             <FiHeart className="text-2xl" />
-            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full px-[6px]">4</span>
+            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full px-[6px]">{wishList.length}</span>
           </div>
+      </Link>
 
           {/* Cart */}
+         <Link to="/dashboard">
           <div className="relative">
             <FiShoppingCart className="text-2xl" />
-            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full px-[6px]">2</span>
+            <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full px-[6px]">{cart.length}</span>
           </div>
+         </Link>
 
           {/* Account (desktop only) */}
           <div className="hidden md:flex items-center gap-1">
@@ -92,6 +100,7 @@ const Header = () => {
           <li><NavLink to="/blog" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Blog</NavLink></li>
          
           <li><NavLink to="/contact" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Contact</NavLink></li>
+          <li><NavLink to="/dashboard" className={({ isActive }) => isActive ? "text-green-600 font-semibold" : "font-semibold"}>Dashboard</NavLink></li>
         </ul>
 
         {/* Phone */}
@@ -139,6 +148,7 @@ const Header = () => {
               <li><NavLink to="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</NavLink></li>
               <li><NavLink to="/pages" onClick={() => setMobileMenuOpen(false)}>Pages</NavLink></li>
               <li><NavLink to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</NavLink></li>
+              <li><NavLink to="/dashboard" onClick={() => setMobileMenuOpen(false)}>Dashboard</NavLink></li>
             </ul>
 
             {/* Contact info */}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { FaStar, FaShoppingCart } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../Redux/CartSlice';
 
 const BestSalesCard = ({product}) => {
   const { image,
@@ -14,7 +16,7 @@ const BestSalesCard = ({product}) => {
     sold,
     progress,} = product;
 
-  
+  const dispatch =useDispatch();
  
 
   return (
@@ -68,7 +70,7 @@ const BestSalesCard = ({product}) => {
           />
         </div>
       </div>
-      <button className="mt-4 bg-[#29A56C] text-white py-2 rounded-md flex items-center justify-center gap-2 hover:bg-green-200 transition text-xs font-medium">
+      <button className="mt-4 bg-[#29A56C] text-white py-2 rounded-md flex items-center justify-center gap-2 hover:bg-green-200 transition text-xs font-medium" onClick={()=>dispatch(addToCart(product))}>
         <FaShoppingCart className="w-4 h-4" />
         Add To Cart
       </button>
